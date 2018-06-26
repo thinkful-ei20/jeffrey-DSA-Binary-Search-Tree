@@ -35,3 +35,22 @@ function heightBST(bst) {
 output = heightBST(tree);
 console.log('heightBST: ', output);
 
+function isBST(bst) {
+  // return true if nothing to compare
+  if (!bst) return true;
+
+  // return false if tree has left child and the left child value is greater than the current value
+  if (bst.left && bst.left.key > bst.key) return false;
+
+  // return false if tree has right child and the right child value is less than the current value
+  if (bst.right && bst.right.key < bst.key) return false;
+
+  // call recursively since bst passes and we now need to check the children
+  if (!isBST(bst.left) || !isBST(bst.right)) return false;
+
+  // passed
+  return true;
+}
+
+output = isBST(tree);
+console.log('isBST: ', output);
