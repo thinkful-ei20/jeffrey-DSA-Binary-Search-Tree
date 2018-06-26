@@ -13,10 +13,10 @@ tree.insert(9, '9');
 tree.insert(2, '2');
 tree.insert(5, '5');
 tree.insert(7, '7');
-console.log(tree);
-console.log(tree.find(7));
-tree.remove(6);
-console.log(tree);
+// console.log(tree);
+// console.log(tree.find(7));
+// tree.remove(6);
+// console.log(tree);
 
 
 
@@ -54,3 +54,24 @@ function isBST(bst) {
 
 output = isBST(tree);
 console.log('isBST: ', output);
+
+let counter = 0;
+function thirdLargestNode(bst) {
+  if (!bst) return null;
+
+  let t = thirdLargestNode(bst.right);
+
+  if (counter !== 3) {
+    counter++;
+    t = bst;
+  }
+
+  if (counter === 3) {
+    return t;
+  } else {
+    return thirdLargestNode(bst.left);
+  }
+}
+
+output = thirdLargestNode(tree);
+console.log(output.value);
